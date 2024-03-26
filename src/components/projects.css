@@ -6,7 +6,7 @@
 .wrap {
     margin-top: 60px;
 }
-.wrap h2 {
+.wrap h2, .wrap h3, .wrap h4 {
     color: #ffffff;
     margin-left: 20px;
 }
