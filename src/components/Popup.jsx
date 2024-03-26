@@ -5,6 +5,8 @@ import {faTimes} from '@fortawesome/free-solid-svg-icons';
 function Popup({isOpen, closePopup, content}) {
     if (!isOpen) 
         return null;
+
+        
     
     return (
         <div className="popup-overlay" onClick={closePopup}>
@@ -19,7 +21,8 @@ function Popup({isOpen, closePopup, content}) {
                         right: '10px',
                         background: 'none',
                         border: 'none',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        color: '#ffffff',
                     }}>
                     <FontAwesomeIcon icon={faTimes}/>
                 </button>
@@ -28,8 +31,8 @@ function Popup({isOpen, closePopup, content}) {
                 <div className="video-container">
                     <iframe
                         src={`https://player.vimeo.com/video/${content.url}`}
-                        width="640"
-                        height="360"
+                        width="1280"
+                        height="720"
                         frameBorder="0"
                         allow="autoplay; fullscreen; picture-in-picture"
                         title={content.title}></iframe>
