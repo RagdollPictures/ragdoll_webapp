@@ -1,0 +1,54 @@
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.wrap {
+    margin-top: 60px;
+}
+.wrap h2 {
+    color: #ffffff;
+    margin-left: 20px;
+}
+
+.sliderContainer {
+    background-color: black;
+    display: flex;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.coverImage {
+    width: 200px;
+    margin-left: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.sliderInner {
+    margin-bottom: 10px;
+}
+
+.sliderContainer {
+    /* Foreground, Background */
+    scrollbar-color: #999 #333;
+}
+.sliderContainer::-webkit-scrollbar {
+    width: 10px;
+    /* Mostly for vertical scrollbars */
+    height: 10px;
+    /* Mostly for horizontal scrollbars */
+}
+.sliderContainer::-webkit-scrollbar-thumb {
+    /* Foreground */
+    border-radius: 5px;
+    background: #2492E9;
+}
+.styled-scrollbars::-webkit-scrollbar-track {
+    /* Background */
+    background: #333;
+}
