@@ -7,6 +7,10 @@
     background-color: #2b2b2b; /* Example background color */
    
   }
+
+  .profileName{
+    color: #ffffff;
+  }
   
   .profile-pic {
     width: 256px; /* Adjust size as needed */
@@ -42,7 +46,7 @@
     overflow: hidden;
     transition: max-height 0.3s ease-out;
    
-    padding-top: 20px;
+   
     padding-bottom: 20px;
     justify-content: center;
 }
@@ -70,6 +74,8 @@
     color: #ffffff;
     width: 800px;
     max-width: 80%;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
   
   

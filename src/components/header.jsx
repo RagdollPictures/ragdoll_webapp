@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import './header.css';
-
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faChevronDown, faChevronUp} from '@fortawesome/free-solid-svg-icons';
+import Education from './Education';
+import Icons from './Icons';
 
 function Header() {
     const [isBioExpanded, setIsBioExpanded] = useState(false);
@@ -14,10 +15,10 @@ function Header() {
 
     const fullBio = `
     
-                    Hello there! I'm Emelie, standing at the vibrant intersection of technology and 
+                    Hello there! I'm standing in the front-end, at the vibrant intersection of technology and 
                     artistic expression. 
-                    crafting stories through animations, designing engaging games and apps, 
-                    and creating digital illustrations that capture the imagination. 
+                    Helping clients to craft their stories through animations, designing engaging games and apps, 
+                    and creating digital illustrations that capture their imagination. 
                      Since founding my company in 2013, I've embarked on numerous creative endeavors, 
                     the projects showcased here representing a glimpse of that journey. 
               
@@ -25,8 +26,14 @@ function Header() {
                     
                     It has been a blend of
                     learning and doing - from mastering the technical skills in 3D graphics for game
-                    development to exploring the depths of art to better understand illustration.
+                    development to exploring the depths of art to better understand illustration, to take
+                    university coruses in various programming lanugages and attending game-james, all this to better understand how graphics and
+                    code goes togheter. Programmers hate graphical artist and vice versa. It doesnt have to 
+                    be like that, its all about knowledge, a knowledge I spent thousends of hours to master.
+                    But still Im not a master, since the technology are constantly changing it is a 
+                    challengin work to keep up, but I'm here, waiting for you to keep me on my toes.
                     <br/><br/>
+
                     My portfolio is filled with animations, but what doesn’t show at first glance is
                     the technical effort behind each piece. It’s all about enhancing the creative
                     process with smart solutions, using scripts and tools to make work not just
@@ -38,12 +45,7 @@ function Header() {
                     equally passionate about the tech side of things. From automating workflows to
                     developing games and apps, I’m always looking for ways to push the boundaries of
                     what I can create.
-                    <br/><br/>
-                    Continuous learning is a big part of who I am. I’ve spent time both in
-                    university and art school, to dive deep
-                    into my fields of interest. This journey has equipped me with a diverse set of
-                    skills, allowing me to explore new challenges and keep growing as a
-                    professional.
+                   
                     <br/><br/>
                     Working with clients for me is about partnership. It’s taking your vision and
                     using my mix of skills to bring it to life. If you’re looking for someone who is
@@ -53,7 +55,7 @@ function Header() {
                     <br/><br/>
                     
                     Looking forward to hear from you <3 
-                    <br/><br/>// Emelie Falk Renström`;
+                    <br/><br/>emelie.falk.renstrom@gmail.com `;
 
     return (
         <div>
@@ -66,7 +68,8 @@ function Header() {
                     <img
                         src="https://ragdoll.pictures/ragdoll_webapp_assets/profile/github-mark-white.svg"
                         alt="GitHub"
-                        className="github-logo"/> {/* Adjust the src to your GitHub logo path */}
+                        className="github-logo"/> 
+                        <p className="profileName">Emelie Falk Renström</p>
                 </a>
             </div>
             <div className="header">
@@ -80,6 +83,7 @@ function Header() {
                 className={`bioWrap ${isBioExpanded
                     ? 'expanded'
                     : ''}`}>
+                        
                 <div
                     className="bioContainer"
                     dangerouslySetInnerHTML={{
@@ -87,6 +91,17 @@ function Header() {
                             ? fullBio
                             : bioPreview
                     }}/>
+
+{isBioExpanded && (
+
+    <div>
+        
+        <Icons />
+                    <Education /> 
+                    </div>          
+                )}
+
+
                 <div className='btnContainer'>
                     <div onClick={() => setIsBioExpanded(!isBioExpanded)} className="readMoreBtn">
                         <FontAwesomeIcon
@@ -95,6 +110,9 @@ function Header() {
                                 : faChevronDown}/>
                     </div>
                 </div>
+
+               
+                
             </div>
 
         </div>
