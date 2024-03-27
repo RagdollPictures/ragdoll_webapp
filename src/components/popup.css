@@ -43,4 +43,68 @@
     height: 100%;
 }
 
+.popupHeadlineContainer{
+  display: flex;
+}
 
+.popupCoverImage img{
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+
+.popupCompanyLogo{
+  display: flex;
+  justify-content: right;
+}
+
+.popupFooterContainer{
+  color: #ffffff;
+}
+
+.popupInfo{
+  color: #ffffff;
+  width: 600px;
+}
+
+.popupInfoContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.popupInfoContainer h4{
+margin: 0;
+margin-bottom: 20px;
+}
+
+.popupTitleContainer{
+  display: flex;
+  color: #ffffff;
+  flex-direction: column;
+}
+
+.popupTitleContainer h3,
+.popupTitleContainer h4{
+  
+  margin: 0;
+  margin-left: 10px;
+}
+
+.readMoreLink {
+  margin-top: 10px;
+  display: inline-flex; /* Aligns the text and icon */
+  align-items: center; /* Centers the icon with the text vertically */
+  color: #007bff; /* Example link color */
+  text-decoration: none; /* Removes underline */
+}
+
+.readMoreLink:hover {
+  text-decoration: underline; /* Optional: underline on hover for visual feedback */
+}
+
+/* You may want to add some spacing between the link text and the icon */
+.readMoreLink .svg-inline--fa {
+  margin-left: 5px;
+}

@@ -7,9 +7,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #0F0F0F;
+  font-size: 1em;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+a{
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a, a:visited {
+  text-decoration: none;
+  color: #ffffff; /* Example: Bootstrap default blue */
+}
+
+a:hover, a:focus {
+  text-decoration: underline;
+  color: #ffffff; /* Example: A darker blue on hover */
+}
+

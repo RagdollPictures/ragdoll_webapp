@@ -775,19 +775,6 @@ function Main() {
                         }
                     </div>
 
-                    <h3>Animations</h3>
-                    <div className="sliderContainer">
-                        {
-                            animationProjects2018.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
-                            ))
-                        }
-                    </div>
 
                     <h3>Books</h3>
                     <div className="sliderContainer">
