@@ -54,6 +54,7 @@
 
 
 .popupCompanyLogo{
+  margin-top:20px;
   display: flex;
   justify-content: right;
 }
@@ -65,6 +66,7 @@
 .popupInfo{
   color: #ffffff;
   width: 600px;
+  max-width: 100%;
 }
 
 .popupInfoContainer{
