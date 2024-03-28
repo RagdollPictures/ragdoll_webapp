@@ -4,8 +4,10 @@ import {collection, query, where, getDocs} from "firebase/firestore";
 import "./projects.css";
 import Popup from './Popup';
 import "./popup.css";
+import ProjectImage from './ProjectImage'; // Adjust the path based on your file structure
 
 function Main() {
+    
     const [projects, setProjects] = useState([]);
     const [animationProjects2024, setAnimationProjects2024] = useState([]); // Updated for 2024 Animation projects
     const [animationProjects2022, setAnimationProjects2022] = useState([]); // Updated for 2024 Animation projects
@@ -55,6 +57,15 @@ function Main() {
 
     const [selectedProject, setSelectedProject] = useState(null);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+   
+   
+    const handleImageLoaded = (projectId) => {
+        setProjects(prevProjects => prevProjects.map(project => 
+          project.id === projectId ? { ...project, isLoaded: true } : project
+        ));
+      };
+   
+   
     const urlPrefix = "https://ragdoll.pictures/ragdoll_webapp_assets/covers/";
 
     useEffect(() => {
@@ -413,14 +424,14 @@ function Main() {
                     <h3>Animations</h3>
                     <div className="sliderContainer">
                         {
-                            animationProjects2024.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
-                            ))
+                             animationProjects2024.map(project => (
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
+                              ))
                         }
                     </div>
 
@@ -428,12 +439,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             appProjects2024.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -451,12 +462,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             animationProjects2023.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -465,12 +476,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             piratmysteriumProjects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -479,12 +490,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             rommysteriumProjects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>
@@ -493,12 +504,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             piOgLuringsMysteriumProjects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>
@@ -507,12 +518,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             mattemagiskMysteriumProjects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>
@@ -529,12 +540,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             animationProjects2022.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -543,12 +554,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             photostoriesProjects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -557,12 +568,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             bookProjects2022.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -579,12 +590,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             animationProjects2021.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -594,12 +605,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             fabelDetektivbyra02Projects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>
@@ -609,12 +620,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             bookProjects2021.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -632,12 +643,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             appProjects2020.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>
@@ -647,12 +658,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             bookProjects2020.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>
@@ -662,12 +673,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             animationProjects2020.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>
@@ -676,12 +687,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             yrkerProjects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>
@@ -691,12 +702,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             fabelDetektivbyra01Projects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -713,12 +724,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             animationProjects2019.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -728,12 +739,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             hyperProjects.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -743,12 +754,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             appProjects2019.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -765,12 +776,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             appProjects2018.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -780,12 +791,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             bookProjects2018.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -802,12 +813,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             gameProjects2017.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -817,12 +828,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             appProjects2017.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                  key={project.id}
+                                  src={urlPrefix + project.cover}
+                                  alt={project.title}
+                                  onClick={() => handleImageClick(project)}
+                                />
                             ))
                         }
                     </div>
@@ -832,12 +843,12 @@ function Main() {
                     <div className="sliderContainer">
                         {
                             bookProjects2017.map(project => (
-                                <img
-                                    className="coverImage"
-                                    key={project.id}
-                                    src={urlPrefix + project.cover}
-                                    alt={project.title}
-                                    onClick={() => handleImageClick(project)}/>
+                                <ProjectImage
+                                key={project.id}
+                                src={urlPrefix + project.cover}
+                                alt={project.title}
+                                onClick={() => handleImageClick(project)}
+                              />
                             ))
                         }
                     </div>

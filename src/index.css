@@ -30,3 +30,7 @@ a:hover, a:focus {
   color: #ffffff; /* Example: A darker blue on hover */
 }
 
+.no-scroll {
+  overflow: hidden;
+  width: 100%;
+}
