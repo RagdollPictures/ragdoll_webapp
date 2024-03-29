@@ -13,7 +13,6 @@ const ProjectImage = ({ src, alt, onClick }) => {
         width={80}
       />
     );
-  };
+};
 
-  
 export default ProjectImage;

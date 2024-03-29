@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
 function AddProjectForm() {
-  // Existing state declarations
   const [title, setTitle] = useState('');
   const [info, setInfo] = useState('');
   const [url, setUrl] = useState('');
@@ -14,8 +13,6 @@ function AddProjectForm() {
   const [headline, setHeadline] = useState('');
   const [footer, setFooter] = useState('');
   const [year, setYear] = useState('');
-
-  // New state declarations for link and companyLink
   const [link, setLink] = useState('');
   const [companyLink, setCompanyLink] = useState('');
 
@@ -25,7 +22,7 @@ function AddProjectForm() {
     try {
       const docRef = doc(db, 'projects', title);
       await setDoc(docRef, {
-        // Existing fields
+      
         title,
         info,
         url,
@@ -36,14 +33,12 @@ function AddProjectForm() {
         headline,
         footer,
         year,
-        // New fields
         link,
         companyLink,
        
       });
 
       alert('Project added successfully!');
-      // Reset all fields after successful submission
       setTitle('');
       setInfo('');
       setUrl('');
@@ -54,7 +49,6 @@ function AddProjectForm() {
       setHeadline('');
       setFooter('');
       setYear('');
-      // Reset new fields
       setLink('');
       setCompanyLink('');
     } catch (error) {

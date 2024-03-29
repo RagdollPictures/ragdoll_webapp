@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { collection, getDocs } from "firebase/firestore";
-import './icons.css';
+import '../style/icons.css';
 
 function Icons() {
     const [projects, setProjects] = useState([]);
@@ -10,10 +10,7 @@ function Icons() {
     useEffect(() => {
         const fetchProjects = async () => {
             const projectsSnapshot = await getDocs(collection(db, "icons"));
-            setProjects(projectsSnapshot.docs.map(doc => ({
-                id: doc.id,
-                ...doc.data()
-            })));
+            setProjects(projectsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
         };
 
         fetchProjects();

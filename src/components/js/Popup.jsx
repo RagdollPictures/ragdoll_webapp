@@ -1,20 +1,15 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import '../style/popup.css';
 
 function Popup({ isOpen, closePopup, content }) {
     useEffect(() => {
-        if (isOpen) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
-    }, [isOpen]); // This effect runs every time isOpen changes.
+        document.body.classList.toggle('no-scroll', isOpen);
+    }, [isOpen]);
 
     if (!isOpen) return null;
 
-    
     const hasVideoUrl = content.url && content.url.trim() !== '';
     const hasLink = content.link && content.link.trim() !== '';
     const popupClass = isOpen ? "popup-content" : "popup-content hidden";
@@ -44,7 +39,6 @@ function Popup({ isOpen, closePopup, content }) {
                             width={80}
                             height={80}/>
                     </div>
-
                     <div className='popupTitleContainer'>
                         <h3>{content.title}</h3>
                         <h4>{content.footer}</h4>
@@ -54,11 +48,11 @@ function Popup({ isOpen, closePopup, content }) {
                     <div className="video-container">
                         <iframe
                             src={`https://player.vimeo.com/video/${content.url}`}
-                            width="1280"
-                            height="720"
                             frameBorder="0"
                             allow="autoplay; fullscreen; picture-in-picture"
-                            title={content.title}></iframe>
+                            title={content.title}
+                            width="1280"
+                            height="720"></iframe>
                     </div>
                 )}
                 <div className='popupInfoContainer'>
@@ -66,17 +60,13 @@ function Popup({ isOpen, closePopup, content }) {
                         <h4>{content.headline}</h4>
                         <div dangerouslySetInnerHTML={{ __html: content.info }}/>
                         {hasLink && (
-                            <div className='popupLinkWrap'>
-                                <a href={content.link} target="_blank" rel="noopener noreferrer" className="readMoreLink">
-                                    Read more <FontAwesomeIcon icon={faExternalLinkAlt}/>
-                                </a>
-                            </div>
+                            <a href={content.link} target="_blank" rel="noopener noreferrer" className="readMoreLink">
+                                Read more <FontAwesomeIcon icon={faExternalLinkAlt}/>
+                            </a>
                         )}
                     </div>
                 </div>
-
                 <div className='popupCompanyLogo'>
-                    {/* Link around the company logo */}
                     <a href={content.companyLink} target="_blank" rel="noopener noreferrer">
                         <img
                             src={`https://ragdoll.pictures/ragdoll_webapp_assets/logos/${content.logo}`}

@@ -1,0 +1,70 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #2b2b2b;
+}
+
+.profileName {
+  color: #ffffff;
+}
+
+.profile-pic {
+  width: 256px;
+  height: 256px;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.social {
+  display: flex;
+  justify-content: left;
+}
+
+.github-logo {
+  padding: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.github-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+}
+
+.bioWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding-bottom: 20px;
+  justify-content: center;
+}
+
+.bioWrap.visible {
+  max-height: 1000px;
+}
+
+.readMoreBtn {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.bioContainer {
+  color: #ffffff;
+  width: 800px;
+  max-width: 80%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
