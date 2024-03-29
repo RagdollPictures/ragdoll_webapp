@@ -44,6 +44,7 @@
   animation: slideInFromLeft 0.2s ease forwards;
   position: relative;
   width: 960px;
+  max-width: 80%;
   margin: 20px;
   background-color: #161616;
   padding: 20px;

@@ -1,0 +1,13 @@
+.footerWrap{
+    color: #ffffff;
+    display: block;
+    width: 100%;
+}
+
+.footerContainer{
+    padding: 20px;
+}
+
+.copyright{
+    font-size: 0.75em;
+}

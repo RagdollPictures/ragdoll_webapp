@@ -9,13 +9,13 @@ function Header() {
     const [isBioExpanded, setIsBioExpanded] = useState(false);
 
     const bioPreview = `Hello there! 
-    <br/><br/>  I'm Emelie, standing at the vibrant intersection of technology and 
-    artistic expression. crafting stories through animations, designing engaging games and apps, ..`;
+    <br/><br/>   I'm standing at the vibrant intersection of technology and 
+    artistic expression. Helping clients to craft their stories through animations, designing engaging games and apps,  ..`;
 
     const fullBio = `Hello there! 
                     <br/><br/>   
-                    I'm standing in the front-end, at the vibrant intersection of technology and 
-                    artistic expression. Helping clients to craft their stories through animations, designing engaging games and apps, 
+                    I'm standing at the vibrant intersection of technology and 
+    artistic expression. Helping clients to craft their stories through animations, designing engaging games and apps, 
                     and creating digital illustrations that capture their imagination. Since founding my company in 2013, I've embarked on numerous creative endeavors, 
                     the projects showcased here representing a glimpse of that journey. 
               
