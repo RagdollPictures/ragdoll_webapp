@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import '../style/header.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faChevronDown, faChevronUp} from '@fortawesome/free-solid-svg-icons';
 import Education from './Education';
 import Icons from './Icons';
 
 function Header() {
     const [isBioExpanded, setIsBioExpanded] = useState(false);
 
-    const bioPreview = `Hello there! I'm Emelie, standing at the vibrant intersection of technology and 
+    const bioPreview = `Hello there! 
+    <br/><br/>  I'm Emelie, standing at the vibrant intersection of technology and 
     artistic expression. crafting stories through animations, designing engaging games and apps, ..`;
 
     const fullBio = `Hello there! 
@@ -78,17 +79,30 @@ function Header() {
                     className="profile-pic"/>
             </div>
 
-            <div className={`bioWrap ${isBioExpanded ? 'expanded' : ''}`}>
-                <div className="bioContainer" dangerouslySetInnerHTML={{ __html: isBioExpanded ? fullBio : bioPreview }}/> 
-                {isBioExpanded && (
-                    <div>
-                        <Icons/>
-                        <Education/>
-                    </div>
-                )}
+            <div
+                className={`bioWrap ${isBioExpanded
+                    ? 'expanded'
+                    : ''}`}>
+                <div
+                    className="bioContainer"
+                    dangerouslySetInnerHTML={{
+                        __html: isBioExpanded
+                            ? fullBio
+                            : bioPreview
+                    }}/> {
+                    isBioExpanded && (
+                        <div>
+                            <Icons/>
+                            <Education/>
+                        </div>
+                    )
+                }
                 <div className='btnContainer'>
                     <div onClick={() => setIsBioExpanded(!isBioExpanded)} className="readMoreBtn">
-                        <FontAwesomeIcon icon={isBioExpanded ? faChevronUp : faChevronDown}/>
+                        <FontAwesomeIcon
+                            icon={isBioExpanded
+                                ? faChevronUp
+                                : faChevronDown}/>
                     </div>
                 </div>
             </div>

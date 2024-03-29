@@ -47,10 +47,9 @@ function Popup({ isOpen, closePopup, content }) {
                 {hasVideoUrl && (
                     <div className="video-container">
                         <iframe
-                            src={`https://player.vimeo.com/video/${content.url}`}
+                            src={`https://player.vimeo.com/video/${content.url}?title=0&byline=0&portrait=0`}
                             frameBorder="0"
                             allow="autoplay; fullscreen; picture-in-picture"
-                            title={content.title}
                             width="1280"
                             height="720"></iframe>
                     </div>
