@@ -23,22 +23,21 @@ function Education() {
     return (
 
         <div className="educationWrap">
-            <h3>Education</h3>
-            <div className="educationsContainer">
-                {
-                    projects.map(project => (
-                        <div key={project.id}>
-                            <div >{project.id}
-                            </div>
-                            <div className='degree'>{project.degree}
-                            </div>
-                        </div>
-
-                    ))
-                }
-            </div>
-
-        </div>
+    <h3>Education</h3>
+    <div className="educationsContainer">
+        {
+            projects.map((project, index) => (
+                <div 
+                    key={project.id} 
+                    style={{ '--fade-delay': `${index * 0.1}s` }} // Stagger the animation start time
+                >
+                    <div>{project.id}</div>
+                    <div className='degree'>{project.degree}</div>
+                </div>
+            ))
+        }
+    </div>
+</div>
 
     );
 }

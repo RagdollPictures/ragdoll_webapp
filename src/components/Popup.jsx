@@ -14,6 +14,7 @@ function Popup({ isOpen, closePopup, content }) {
 
     if (!isOpen) return null;
 
+    
     const hasVideoUrl = content.url && content.url.trim() !== '';
     const hasLink = content.link && content.link.trim() !== '';
     const popupClass = isOpen ? "popup-content" : "popup-content hidden";

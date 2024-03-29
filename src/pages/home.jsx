@@ -15,7 +15,7 @@ const Home = () => {
 
         <Header />
         <Popup isOpen={isPopupOpen} closePopup={togglePopup}></Popup>
-
+       
         <Projects/>
       </div>
     );

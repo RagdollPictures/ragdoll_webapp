@@ -15,7 +15,9 @@ function Header() {
 
     const fullBio = `
     
-                    Hello there! I'm standing in the front-end, at the vibrant intersection of technology and 
+                    Hello there! 
+                    <br/><br/>   
+                    I'm standing in the front-end, at the vibrant intersection of technology and 
                     artistic expression. 
                     Helping clients to craft their stories through animations, designing engaging games and apps, 
                     and creating digital illustrations that capture their imagination. 
@@ -28,10 +30,25 @@ function Header() {
                     learning and doing - from mastering the technical skills in 3D graphics for game
                     development to exploring the depths of art to better understand illustration, to take
                     university coruses in various programming lanugages and attending game-james, all this to better understand how graphics and
-                    code goes togheter. Programmers hate graphical artist and vice versa. It doesnt have to 
-                    be like that, its all about knowledge, a knowledge I spent thousends of hours to master.
-                    But still Im not a master, since the technology are constantly changing it is a 
-                    challengin work to keep up, but I'm here, waiting for you to keep me on my toes.
+                    code goes togheter. 
+                    <br/><br/>
+
+                    Bridging the gap between programmers and graphic artists often seems like navigating a 
+                    minefield—artists bring innovative, imaginative ideas to the table, while programmers 
+                    face the tough job of tethering these ideas to the realm of technical feasibility. 
+                    The root of the friction isn't incompatibility but a gap in mutual understanding. 
+                    <br/><br/>      
+                    Graphic artists may not fully grasp the technical limitations they're up against, 
+                    while programmers might struggle to communicate these constraints without a solid 
+                    grasp of the artistic process.
+
+                    This is  a challenge I've dedicated thousands of hours to overcoming. It's about 
+                    building a shared language and understanding, a bridge over the gap between creativity 
+                    and technology. Mastery in this field is an ongoing journey, given the relentless pace 
+                    of technological evolution. But embracing this challenge is what keeps me driven, 
+                    always ready to explore new frontiers and push boundaries, together with teams who 
+                    are as passionate as I am. It's not just about keeping up, it's about pioneering 
+                    the path forward, learning and growing together.
                     <br/><br/>
 
                     My portfolio is filled with animations, but what doesn’t show at first glance is
@@ -68,8 +85,8 @@ function Header() {
                     <img
                         src="https://ragdoll.pictures/ragdoll_webapp_assets/profile/github-mark-white.svg"
                         alt="GitHub"
-                        className="github-logo"/> 
-                        <p className="profileName">Emelie Falk Renström</p>
+                        className="github-logo"/>
+                    <p className="profileName">Emelie Falk Renström</p>
                 </a>
             </div>
             <div className="header">
@@ -83,24 +100,23 @@ function Header() {
                 className={`bioWrap ${isBioExpanded
                     ? 'expanded'
                     : ''}`}>
-                        
+
                 <div
                     className="bioContainer"
                     dangerouslySetInnerHTML={{
                         __html: isBioExpanded
                             ? fullBio
                             : bioPreview
-                    }}/>
+                    }}/> {
+                    isBioExpanded && (
 
-{isBioExpanded && (
+                        <div>
 
-    <div>
-        
-        <Icons />
-                    <Education /> 
-                    </div>          
-                )}
-
+                            <Icons/>
+                            <Education/>
+                        </div>
+                    )
+                }
 
                 <div className='btnContainer'>
                     <div onClick={() => setIsBioExpanded(!isBioExpanded)} className="readMoreBtn">
@@ -111,8 +127,6 @@ function Header() {
                     </div>
                 </div>
 
-               
-                
             </div>
 
         </div>

@@ -1,4 +1,18 @@
-
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .educationsContainer div {
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: var(--fade-delay, 0s); /* Use a default value of 0s if the variable is not set */
+  }
 
 .educationsContainer{
     display: flex;

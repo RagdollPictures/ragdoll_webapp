@@ -1,4 +1,11 @@
-
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .fade-in {
+    animation: fadeIn 1s ease-out;
+  }
 
 .iconsContainer{
     display: flex;
@@ -19,6 +26,7 @@
     padding: 20px;
     border-radius: 10px;
     margin: 10px;
+
 }
 .icons{
     font-size: 0.75em;
