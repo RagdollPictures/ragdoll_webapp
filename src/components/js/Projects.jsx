@@ -1,44 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../style/projects.css';
-import Popup from './Popup';
 import ProjectImage from './ProjectImage';
+
+const makeSlug = (text) => {
+    return String(text)
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+};
 
 function Main() {
     const [projectsByType, setProjectsByType] = useState({});
-    const [allProjects, setAllProjects] = useState([]);
-    const [projectsLoaded, setProjectsLoaded] = useState(false);
-
-    const location = useLocation();
-    const navigate = useNavigate();
-
-    const makeSlug = (text) => {
-        return String(text)
-            .toLowerCase()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/^-+|-+$/g, '');
-    };
 
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const snapshot = await getDocs(collection(db, 'projects'));
+                const snapshot = await getDocs(
+                    collection(db, 'projects')
+                );
 
                 const projects = snapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
                 }));
 
-                setAllProjects(projects);
-                setProjectsByType(transformData(projects));
+                setProjectsByType(
+                    transformData(projects)
+                );
             } catch (error) {
-                console.error('Error fetching projects:', error);
-            } finally {
-                setProjectsLoaded(true);
+                console.error(
+                    'Error fetching projects:',
+                    error
+                );
             }
         };
 
@@ -65,58 +63,6 @@ function Main() {
         return byType;
     };
 
-    const getProjectSlugFromUrl = () => {
-        const match = location.pathname.match(/^\/project\/([^/]+)\/?$/);
-
-        if (!match) {
-            return null;
-        }
-
-        return match[1];
-    };
-
-    const projectSlugFromUrl = getProjectSlugFromUrl();
-
-    const selectedProject = projectSlugFromUrl
-        ? allProjects.find(
-            project => makeSlug(project.id) === projectSlugFromUrl
-        )
-        : null;
-
-    const handleImageClick = (project) => {
-        navigate(
-            `/project/${makeSlug(project.id)}`,
-            {
-                state: {
-                    openedFromPortfolio: true
-                }
-            }
-        );
-    };
-
-    const closePopup = () => {
-        if (location.state?.openedFromPortfolio) {
-            navigate(-1);
-        } else {
-            navigate('/');
-        }
-    };
-
-    useEffect(() => {
-        if (
-            projectsLoaded &&
-            projectSlugFromUrl &&
-            !selectedProject
-        ) {
-            navigate('/', { replace: true });
-        }
-    }, [
-        projectsLoaded,
-        projectSlugFromUrl,
-        selectedProject,
-        navigate
-    ]);
-
     const renderProjects = () => {
         const sortedYears = projectsByType
             ? Object
@@ -131,7 +77,10 @@ function Main() {
                 : {};
 
             return (
-                <div key={year} className="year">
+                <div
+                    key={year}
+                    className="year"
+                >
                     <div className="yearNumberContainer">
                         <h2>{year}</h2>
                     </div>
@@ -144,12 +93,17 @@ function Main() {
 
                                 <div className="sliderContainer">
                                     {projects.map(project => (
-                                        <ProjectImage
+                                        <Link
                                             key={project.id}
-                                            src={`https://ragdoll.pictures/ragdoll_webapp_assets/covers/${project.cover}`}
-                                            alt={project.title}
-                                            onClick={() => handleImageClick(project)}
-                                        />
+                                            to={`/project/${makeSlug(project.id)}`}
+                                            className="projectLink"
+                                            aria-label={`View ${project.title}`}
+                                        >
+                                            <ProjectImage
+                                                src={`https://ragdoll.pictures/ragdoll_webapp_assets/covers/${project.cover}`}
+                                                alt={project.title}
+                                            />
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
@@ -162,14 +116,6 @@ function Main() {
     return (
         <div className="wrap">
             {renderProjects()}
-
-            {selectedProject && (
-                <Popup
-                    isOpen={true}
-                    closePopup={closePopup}
-                    content={selectedProject}
-                />
-            )}
         </div>
     );
 }

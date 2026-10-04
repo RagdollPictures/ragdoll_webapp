@@ -1,0 +1,250 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mediaFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* PAGE */
+
+.projectPage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: #000000;
+  box-sizing: border-box;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.projectPageContent {
+  position: relative;
+  width: 960px;
+  max-width: 80%;
+  margin: 20px;
+  background-color: #161616;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.projectPageStatus {
+  width: 960px;
+  max-width: 80%;
+  min-height: 300px;
+  margin: 20px;
+  background-color: #161616;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* MEDIA */
+
+.projectMediaContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+.projectMediaContainer video,
+.projectMediaContainer .projectBanner {
+  animation: mediaFadeIn 1.5s ease forwards;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* HEADER */
+
+.projectHeadlineContainer {
+  display: flex;
+}
+
+.projectCoverImage img {
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.projectTitleContainer {
+  display: flex;
+  color: #ffffff;
+  flex-direction: column;
+}
+
+.projectTitleContainer h1,
+.projectTitleContainer h2 {
+  margin: 0;
+  margin-left: 10px;
+}
+
+/*
+  Matchar ungefär browserstorlekarna som dina gamla
+  popup h3/h4 hade.
+*/
+
+.projectTitleContainer h1 {
+  font-size: 1.17em;
+}
+
+.projectTitleContainer h2 {
+  font-size: 1em;
+}
+
+/* INFO */
+
+.projectInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.projectInfo {
+  color: #ffffff;
+  width: 600px;
+  max-width: 100%;
+}
+
+.projectInfo h3 {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+/* BOTTOM BAR */
+
+.projectBottomBar {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.projectGithub {
+  display: flex;
+  align-items: center;
+}
+
+.projectGithubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.projectGithubLink:hover {
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.projectGithubLogo {
+  width: 36px;
+  height: 36px;
+}
+
+.projectGithubLink span {
+  font-size: 0.9rem;
+}
+
+.projectCompanyLogo {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+/* LINKS */
+
+.readMoreLink {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.readMoreLink:hover {
+  text-decoration: underline;
+}
+
+.readMoreLink .svg-inline--fa {
+  margin-left: 5px;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .projectPage {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .projectPageContent {
+    width: 100%;
+    max-width: calc(100% - 20px);
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .projectPageStatus {
+    width: 100%;
+    max-width: calc(100% - 20px);
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .projectInfo {
+    width: 100%;
+  }
+
+  .projectHeadlineContainer {
+    padding-right: 30px;
+  }
+
+  .projectBottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .projectCompanyLogo {
+    order: 1;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+
+  .projectGithub {
+    order: 2;
+  }
+ 
+  .projectPage {
+  scroll-margin-top: 20px;
+}
+}

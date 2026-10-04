@@ -1,16 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+import { doc, getDoc } from 'firebase/firestore';
+
 import '../style/header.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faChevronDown, faChevronUp} from '@fortawesome/free-solid-svg-icons';
-import {doc, getDoc} from 'firebase/firestore';
-import {db} from '../../firebase';
-import Education from './Education';
-import Icons from './Icons';
+import { db } from '../../firebase';
 
 function Header() {
-    const [isBioExpanded, setIsBioExpanded] = useState(false);
-    const [bioPreview, setBioPreview] = useState('');
-    const [fullBio, setFullBio] = useState('');
+    const [bio, setBio] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -22,13 +20,21 @@ function Header() {
                 if (bioSnap.exists()) {
                     const data = bioSnap.data();
 
-                    setBioPreview(data.preview || '');
-                    setFullBio(data.full || '');
+                    setBio(
+                        data.preview ||
+                        data.full ||
+                        ''
+                    );
                 } else {
-                    console.error('Bio document does not exist in Firestore.');
+                    console.error(
+                        'Bio document does not exist in Firestore.'
+                    );
                 }
             } catch (error) {
-                console.error('Error fetching bio from Firestore:', error);
+                console.error(
+                    'Error fetching bio from Firestore:',
+                    error
+                );
             } finally {
                 setIsLoading(false);
             }
@@ -38,8 +44,24 @@ function Header() {
     }, []);
 
     return (
-        <div>
-            <div className='social'>
+        <header>
+
+            <div className="headerTopBar">
+
+                <Link
+                    to="/"
+                    className="headerName"
+                >
+                    <FontAwesomeIcon
+                        icon={faHouse}
+                        className="homeIcon"
+                    />
+
+                    <span>
+                        Emelie Falk Renström
+                    </span>
+                </Link>
+
                 <a
                     href="https://github.com/RagdollPictures/ragdoll_webapp"
                     target="_blank"
@@ -48,64 +70,37 @@ function Header() {
                 >
                     <img
                         src="https://ragdoll.pictures/ragdoll_webapp_assets/profile/github-mark-white.svg"
-                        alt="GitHub"
+                        alt=""
                         className="github-logo"
                     />
-                    <p className="profileName">Emelie Falk Renström</p>
+
+                    <span>
+                        View on GitHub
+                    </span>
                 </a>
+
             </div>
 
             <div className="header">
                 <img
                     src="https://ragdoll.pictures/ragdoll_webapp_assets/profile/profile_emelie.jpg"
-                    alt="Profile"
+                    alt="Emelie Falk Renström"
                     className="profile-pic"
                 />
             </div>
 
-            <div
-                className={`bioWrap ${
-                    isBioExpanded ? 'expanded' : ''
-                }`}
-            >
+            <div className="bioWrap">
                 {!isLoading && (
-                    <>
-                        <div
-                            className="bioContainer"
-                            dangerouslySetInnerHTML={{
-                                __html: isBioExpanded
-                                    ? fullBio
-                                    : bioPreview
-                            }}
-                        />
-
-                        {isBioExpanded && (
-                            <div>
-                                <Icons />
-                                <Education />
-                            </div>
-                        )}
-
-                        <div className='btnContainer'>
-                            <div
-                                onClick={() =>
-                                    setIsBioExpanded(!isBioExpanded)
-                                }
-                                className="readMoreBtn"
-                            >
-                                <FontAwesomeIcon
-                                    icon={
-                                        isBioExpanded
-                                            ? faChevronUp
-                                            : faChevronDown
-                                    }
-                                />
-                            </div>
-                        </div>
-                    </>
+                    <div
+                        className="bioContainer"
+                        dangerouslySetInnerHTML={{
+                            __html: bio
+                        }}
+                    />
                 )}
             </div>
-        </div>
+
+        </header>
     );
 }
 
