@@ -62,7 +62,7 @@
     height: 0;
 }
 
-.video-container iframe {
+.video-container video {
   animation: iframeFadeIn 1.5s ease forwards;
   position: absolute;
   top: 0;

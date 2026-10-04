@@ -46,12 +46,19 @@ function Popup({ isOpen, closePopup, content }) {
                 </div>
                 {hasVideoUrl && (
                     <div className="video-container">
-                        <iframe
-                            src={`https://player.vimeo.com/video/${content.url}?title=0&byline=0&portrait=0`}
-                            frameBorder="0"
-                            allow="autoplay; fullscreen; picture-in-picture"
-                            width="1280"
-                            height="720"></iframe>
+                        <video
+    controls
+    playsInline
+    preload="metadata"
+    poster={`https://ragdoll.pictures/ragdoll_webapp_assets/covers/${content.cover}`}
+    width="1280"
+    height="720"
+>
+    <source
+        src={`https://ragdoll.pictures/ragdoll_webapp_assets/videos/${content.url}.mp4`}
+        type="video/mp4"
+    />
+</video>
                     </div>
                 )}
                 <div className='popupInfoContainer'>
