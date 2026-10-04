@@ -9,9 +9,11 @@ function Footer() {
     return (
         <div className='footerWrap'>
             
-            <div className='footerContainer'> 
              <Icons />
-                    <Education />
+            <Education />
+            
+            <div className='footerContainer'> 
+            
                 <div className='footerEmail'>emelie.falk.renstrom@gmail.com</div>
                 <div className='copyright'>© Ragdoll 2026</div>
             </div>
