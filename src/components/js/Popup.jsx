@@ -29,6 +29,11 @@ function Popup({ isOpen, closePopup, content }) {
         typeof content.link === 'string' &&
         content.link.trim() !== '';
 
+    const hasGithub =
+        content.github &&
+        typeof content.github === 'string' &&
+        content.github.trim() !== '';
+
     const popupClass = isOpen
         ? 'popup-content'
         : 'popup-content hidden';
@@ -121,18 +126,38 @@ function Popup({ isOpen, closePopup, content }) {
                     </div>
                 </div>
 
-                <div className="popupCompanyLogo">
-                    <a
-                        href={content.companyLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <img
-                            src={`https://ragdoll.pictures/ragdoll_webapp_assets/logos/${content.logo}`}
-                            alt={content.title}
-                            height={50}
-                        />
-                    </a>
+                <div className="popupBottomBar">
+                    {hasGithub && (
+                        <div className="popupGithub">
+                            <a
+                                href={content.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="popupGithubLink"
+                            >
+                                <img
+                                    src="https://ragdoll.pictures/ragdoll_webapp_assets/profile/github-mark-white.svg"
+                                    alt="GitHub"
+                                    className="popupGithubLogo"
+                                />
+                                <span>View on GitHub</span>
+                            </a>
+                        </div>
+                    )}
+
+                    <div className="popupCompanyLogo">
+                        <a
+                            href={content.companyLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src={`https://ragdoll.pictures/ragdoll_webapp_assets/logos/${content.logo}`}
+                                alt={content.title}
+                                height={50}
+                            />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/js/home';
+
 function App() {
-  
-  return (
-    <div>
-      <Home />
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="*" element={<Home />} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
