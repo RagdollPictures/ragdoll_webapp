@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { doc, getDoc } from 'firebase/firestore';
@@ -11,16 +11,46 @@ function Header() {
     const [bio, setBio] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
+    const portfolioMatch = useMatch('/portfolio/:portfolioSlug');
+    const portfolioSlug = portfolioMatch?.params?.portfolioSlug || null;
+
     useEffect(() => {
         const fetchBio = async () => {
+            setIsLoading(true);
+
             try {
-                const bioRef = doc(db, 'siteContent', 'bio');
+                // Portfolio-specific bio
+                if (portfolioSlug) {
+                    const portfolioRef = doc(
+                        db,
+                        'portfolios',
+                        portfolioSlug
+                    );
+
+                    const portfolioSnap = await getDoc(portfolioRef);
+
+                    if (portfolioSnap.exists()) {
+                        const data = portfolioSnap.data();
+
+                        setBio(data.bio || '');
+                        return;
+                    }
+                }
+
+                // Default bio
+                const bioRef = doc(
+                    db,
+                    'siteContent',
+                    'bio'
+                );
+
                 const bioSnap = await getDoc(bioRef);
 
                 if (bioSnap.exists()) {
                     const data = bioSnap.data();
 
                     setBio(
+                        data.bio ||
                         data.preview ||
                         data.full ||
                         ''
@@ -29,19 +59,24 @@ function Header() {
                     console.error(
                         'Bio document does not exist in Firestore.'
                     );
+
+                    setBio('');
                 }
+
             } catch (error) {
                 console.error(
                     'Error fetching bio from Firestore:',
                     error
                 );
+
+                setBio('');
             } finally {
                 setIsLoading(false);
             }
         };
 
         fetchBio();
-    }, []);
+    }, [portfolioSlug]);
 
     return (
         <header>

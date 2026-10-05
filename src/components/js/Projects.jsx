@@ -103,6 +103,10 @@ function Main() {
                                                 src={`https://ragdoll.pictures/ragdoll_webapp_assets/covers/${project.cover}`}
                                                 alt={project.title}
                                             />
+
+                                            <span className="projectName">
+                                                {project.id}
+                                            </span>
                                         </Link>
                                     ))}
                                 </div>

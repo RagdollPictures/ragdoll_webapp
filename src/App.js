@@ -9,6 +9,7 @@ import {
 import Layout from './pages/js/Layout';
 import Home from './pages/js/home';
 import ProjectPage from './pages/js/ProjectPage';
+import PortfolioPage from './pages/js/PortfolioPage';
 
 function App() {
     return (
@@ -23,6 +24,11 @@ function App() {
                     <Route
                         path="/project/:projectSlug"
                         element={<ProjectPage />}
+                    />
+
+                    <Route
+                        path="/portfolio/:portfolioSlug"
+                        element={<PortfolioPage />}
                     />
 
                     <Route

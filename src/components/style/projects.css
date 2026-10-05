@@ -14,7 +14,7 @@
       overflow-y: auto;
       padding-top: 10px;
       padding-bottom: 10px;
-      height: 200px;
+      height: 250px;
       scrollbar-color: #999 #333;
   }
   
@@ -66,18 +66,35 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 
-  .projectLink {
-  display: flex;
-  flex: 0 0 auto;
+ .projectLink {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+    color: #ffffff;
+    text-decoration: none;
 }
 
-  @media (max-width: 960px) {
-    .coverImage  {
+.projectName {
+    width: 200px;
+    margin-top: 8px;
+    margin-left: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: lighter;
+}
+
+@media (max-width: 960px) {
+    .coverImage {
         width: 150px;
     }
-    .sliderContainer {
-        height: 150px;
+
+    .projectName {
+        width: 150px;
     }
-  }
+
+    .sliderContainer {
+        height: 210px;
+    }
+}
 
   
